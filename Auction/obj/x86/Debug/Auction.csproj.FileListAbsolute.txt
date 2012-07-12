@@ -1,0 +1,5 @@
+c:\users\user\documents\visual studio 2010\Projects\Auction\Auction\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\user\documents\visual studio 2010\Projects\Auction\Auction\bin\Debug\Auction.exe
+c:\users\user\documents\visual studio 2010\Projects\Auction\Auction\bin\Debug\Auction.pdb
+c:\users\user\documents\visual studio 2010\Projects\Auction\Auction\obj\x86\Debug\Auction.exe
+c:\users\user\documents\visual studio 2010\Projects\Auction\Auction\obj\x86\Debug\Auction.pdb
