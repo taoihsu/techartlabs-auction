@@ -10,8 +10,8 @@ namespace Auction
         public List<Bid> Bids { get; private set; }
         public List<Sale> LotsBuyed { get; private set; }
 
-        public Buyer(string firstName, string secondName)
-            : base(firstName, secondName)
+        public Buyer(string login, string firstName, string secondName)
+            : base(login, firstName, secondName)
         {
             Bids = new List<Bid>();
             LotsBuyed = new List<Sale>();

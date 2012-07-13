@@ -11,13 +11,20 @@ namespace Auction
         public string Name { get; private set; }
         public Lot Lot { get; private set; }
         public Category Category { get; private set; }
-        //отдавать копию ставок?
         private List<Bid> _bids;
         public ReadOnlyCollection<Bid> Bids { get { return new ReadOnlyCollection<Bid>(_bids);} } 
         public Seller Seller { get; private set; }
         public Buyer Buyer { get { return IsActive ? null : LastBidder; } }
-        public Buyer LastBidder { get { return Bids.LastOrDefault().Bidder; } }
-        
+        public Buyer LastBidder
+        {
+            get
+            {
+                var lastOrDefault = Bids.LastOrDefault();
+                if (lastOrDefault != null) return lastOrDefault.Bidder;
+                return null;
+            }
+        }
+
         public bool CanBuyOut { get; private set; }
         public double BuyOutPrice { get; private set; }
 
