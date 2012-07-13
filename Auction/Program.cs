@@ -10,8 +10,9 @@ namespace Auction
         static void Main(string[] args)
         {
             Auction auc = new Auction("test auction");
-            Sale sale = new Sale(100,new Seller(), new TimeSpan(100000),new Category("category1"),10000 );
-            //sale.Bids.Add(new Bid(102,new Buyer()));
+            Sale sale = new Sale("first sale",new Lot("first lot","amazing lot!",null), 100,new Seller("Ivan","Petrushkin"),new TimeSpan(100000),new Category("elite"));
+            sale.Bids.Add(new Bid(102,new Buyer("Petya","---")));
+
         }
     }
 }

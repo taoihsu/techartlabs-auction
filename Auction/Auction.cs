@@ -9,8 +9,8 @@ namespace Auction
     {
         public string Name { get; private set; }
         //
-        public List<Sery> Series { get; private set; }
-        public Sery this[string saleName]
+        public List<Series> Series { get; private set; }
+        public Series this[string saleName]
         {
             get { return Series.First(s => s.Name == saleName); }
         }
@@ -18,10 +18,10 @@ namespace Auction
         public Auction(string name)
         {
             Name = name;
-            Series = new List<Sery>();
+            Series = new List<Series>();
         }
 
-        public void AddSeries(Sery series)
+        public void AddSeries(Series series)
         {
             Series.Add(series);
         }
@@ -31,11 +31,11 @@ namespace Auction
 
         public double GetSummaryPrice()
         {
-            return Series.Select<Sery, double>(s => s.SummaryPrice).Sum();
+            return Series.Select<Series, double>(s => s.SummaryPrice).Sum();
         }
         public double GetSummaryPriceByCategory(Category category)
         {
-            return Series.Select<Sery, double>(s => s.GetPriceByCategory(category)).Sum();
+            return Series.Select<Series, double>(s => s.GetPriceByCategory(category)).Sum();
         }
 
 
