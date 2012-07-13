@@ -11,7 +11,6 @@ namespace Auction
     {
         public string Name { get; private set; }
         private List<Series> _series;
-        //singleton ?
         public ReadOnlyCollection<Series> Series {get{return new ReadOnlyCollection<Series>(_series);}} 
         public Series this[string seriesName]
         {
@@ -29,6 +28,8 @@ namespace Auction
         {
             Name = name;
             _series = new List<Series>();
+            _sellers = new List<Seller>();
+            _buyers = new List<Buyer>();
         }
         public void AddSeries(Series series)
         {
@@ -70,7 +71,6 @@ namespace Auction
             return _sellers.Find(s => (s.FirstName == firstName) && (s.SecondName == secondName));
         }
 
-
         public double GetSummaryPrice()
         {
             return _series.Select<Series, double>(s => s.SummaryPrice).Sum();
@@ -80,15 +80,36 @@ namespace Auction
             return _series.Select<Series, double>(s => s.GetPriceByCategory(category)).Sum();
         }
 
-        //no implementation
-        public List<Buyer> GetActiveBuyers(double percentage)
+        public IEnumerable<Buyer> GetActiveBuyersByBidsCount(int buyersCount)
         {
-            return new List<Buyer>();
+            List<Buyer> sortedByBidsCount = new List<Buyer>(_buyers); 
+            sortedByBidsCount.Sort(BuyersByBidsCountComparer);
+            return sortedByBidsCount.Take(buyersCount);
         }
-
-        private double GetActivityIndex(double averagePrice, int purchaseCount)
+        private int BuyersByBidsCountComparer(Buyer first, Buyer second)
         {
-            return averagePrice*purchaseCount;
+            if (first == null)
+            {
+                if (second == null)
+                { 
+                    return 0;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                if (second == null)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return first.GetBidsCount().CompareTo(second.GetBidsCount());
+                }
+            }
         }
     }
 }
