@@ -9,8 +9,8 @@ namespace Auction
     {
         public List<Sale> Lots { get; private set; }
 
-        public Seller(string firstName, string secondName)
-            : base(firstName, secondName)
+        public Seller(string login, string firstName, string secondName)
+            : base(login, firstName, secondName)
         {
             Lots = new List<Sale>();
         }

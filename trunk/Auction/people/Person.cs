@@ -7,11 +7,13 @@ namespace Auction
 {
     public class Person
     {
-        public string FirstName { get; set; }
-        public string SecondName { get; set; }
+        public string Login { get; private set; }
+        public string FirstName { get; private set; }
+        public string SecondName { get; private set; }
 
-        public Person(string firstName, string secondName)
+        public Person(string login, string firstName, string secondName)
         {
+            Login = login;
             FirstName = firstName;
             SecondName = secondName;
         }
