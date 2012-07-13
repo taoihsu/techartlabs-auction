@@ -17,6 +17,19 @@ namespace Auction
             LotsBuyed = new List<Sale>();
         }
 
-        
+        public int GetPurchaseCount()
+        {
+            return LotsBuyed.Count;
+        }
+        public int GetBidsCount()
+        {
+            return Bids.Count;
+        }
+        public double GetAveragePrice()
+        {
+            double priceSum = LotsBuyed.Sum(sale => sale.CurrentPrice);
+            return priceSum/GetPurchaseCount();
+        }
+
     }
 }

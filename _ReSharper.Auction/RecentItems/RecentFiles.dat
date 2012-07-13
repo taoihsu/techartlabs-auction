@@ -3,44 +3,44 @@
     <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Category.cs" caret="0" fromTop="0" />
     <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Bid.cs" caret="141" fromTop="8" />
     <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Lot.cs" caret="649" fromTop="21" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Series.cs" caret="249" fromTop="10" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/d:people/f:Buyer.cs" caret="263" fromTop="10" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/d:people/f:Person.cs" caret="286" fromTop="11" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Program.cs" caret="13" fromTop="0" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/d:people/f:Person.cs" caret="0" fromTop="0" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Program.cs" caret="1183" fromTop="26" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/d:people/f:Buyer.cs" caret="489" fromTop="17" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/d:people/f:Seller.cs" caret="394" fromTop="15" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Series.cs" caret="285" fromTop="11" />
     <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Sale.cs" caret="265" fromTop="11" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="2439" fromTop="34" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/d:people/f:Seller.cs" caret="152" fromTop="8" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="295" fromTop="13" />
   </RecentFiles>
   <RecentEdits>
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Sale.cs" caret="2567" fromTop="27" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Sale.cs" caret="2126" fromTop="32" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Sale.cs" caret="1005" fromTop="5" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Sale.cs" caret="1687" fromTop="18" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Bid.cs" caret="344" fromTop="13" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="540" fromTop="12" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Lot.cs" caret="649" fromTop="20" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Lot.cs" caret="410" fromTop="13" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/d:people/f:Seller.cs" caret="154" fromTop="9" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/d:people/f:Buyer.cs" caret="438" fromTop="18" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Sale.cs" caret="333" fromTop="12" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Sale.cs" caret="860" fromTop="26" />
     <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Sale.cs" caret="596" fromTop="16" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="204" fromTop="8" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="976" fromTop="17" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="2770" fromTop="21" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="3076" fromTop="31" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="829" fromTop="20" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="806" fromTop="20" />
     <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/d:people/f:Person.cs" caret="421" fromTop="15" />
     <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/d:people/f:Person.cs" caret="292" fromTop="11" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/d:people/f:Seller.cs" caret="310" fromTop="12" />
     <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/d:people/f:Buyer.cs" caret="366" fromTop="13" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Program.cs" caret="358" fromTop="12" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="1437" fromTop="23" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="1751" fromTop="24" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="529" fromTop="11" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="2439" fromTop="39" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="2148" fromTop="25" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="2112" fromTop="25" />
-    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="2398" fromTop="31" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="1500" fromTop="23" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="1814" fromTop="24" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="506" fromTop="11" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="2502" fromTop="39" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="2211" fromTop="25" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="2175" fromTop="25" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/d:people/f:Seller.cs" caret="394" fromTop="15" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/d:people/f:Buyer.cs" caret="579" fromTop="21" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/d:people/f:Buyer.cs" caret="866" fromTop="21" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/d:people/f:Buyer.cs" caret="668" fromTop="22" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="3768" fromTop="40" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="3313" fromTop="14" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="3424" fromTop="19" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="3559" fromTop="25" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="3734" fromTop="30" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="3127" fromTop="19" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="2833" fromTop="12" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Program.cs" caret="1195" fromTop="14" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/d:people/f:Seller.cs" caret="227" fromTop="11" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="2502" fromTop="19" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="1026" fromTop="26" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Program.cs" caret="1195" fromTop="21" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Program.cs" caret="248" fromTop="12" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Program.cs" caret="1177" fromTop="25" />
+    <File id="D2FF0861-E43F-4EA7-9FE0-E0B18DCEE175/f:Auction.cs" caret="295" fromTop="13" />
   </RecentEdits>
 </RecentFiles>
