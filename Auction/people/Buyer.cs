@@ -31,5 +31,11 @@ namespace Auction
             return priceSum/GetPurchaseCount();
         }
 
+        // ? 
+        public void RegisterBid(Sale sale)
+        {
+
+        }
+
     }
 }

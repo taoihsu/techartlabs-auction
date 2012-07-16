@@ -33,7 +33,7 @@ namespace Auction
 
         public int GetActiveLotCout()
         {
-            return _sales.Where<Sale>(l => l.IsActive).Count<Sale>();
+            return _sales.Count(l => l.IsActive);
         }
 
         public List<Buyer> GetBuyers()
