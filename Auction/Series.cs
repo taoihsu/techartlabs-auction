@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
@@ -8,36 +9,37 @@ namespace Auction
     public class Series
     {
         public string Name { get; private set; }
-        public List<Sale> Sales { get; private set; }
+        private List<Sale> _sales;
+        public ReadOnlyCollection<Sale> Sales { get { return new ReadOnlyCollection<Sale>(_sales); } }
         public double SummaryPrice
         {
-            get { return Sales.Select<Sale, double>(l => l.CurrentPrice).Sum(); }
+            get { return _sales.Select<Sale, double>(l => l.CurrentPrice).Sum(); }
         }
 
         public Series(string name)
         {
             Name = name;
-            Sales = new List<Sale>(); 
+            _sales = new List<Sale>(); 
         }
         public void AddSale(Sale sale)
         {
-            Sales.Add(sale);
+            _sales.Add(sale);
         }
         public double GetPrice() { return SummaryPrice; }
         public double GetPriceByCategory(Category category)
         {
-            return Sales.Where<Sale>(l => l.Category.Name == category.Name).Select<Sale, double>(l => l.CurrentPrice).Sum();
+            return _sales.Where<Sale>(l => l.Category.Name == category.Name).Select<Sale, double>(l => l.CurrentPrice).Sum();
         }
 
         public int GetActiveLotCout()
         {
-            return Sales.Where<Sale>(l => l.IsActive).Count<Sale>();
+            return _sales.Where<Sale>(l => l.IsActive).Count<Sale>();
         }
 
         public List<Buyer> GetBuyers()
         {
             List<Buyer> buyers = new List<Buyer>();
-            foreach (var lot in Sales)
+            foreach (var lot in _sales)
             {
                 if (!buyers.Contains<Buyer>(lot.Buyer))
                     buyers.Add(lot.Buyer);
