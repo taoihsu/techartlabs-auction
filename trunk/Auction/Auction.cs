@@ -22,8 +22,7 @@ namespace Auction
 
         private List<Buyer> _buyers;
         public ReadOnlyCollection<Buyer> Buyers { get { return new ReadOnlyCollection<Buyer>(_buyers); } }
-
-
+        
         public Auction(string name)
         {
             Name = name;

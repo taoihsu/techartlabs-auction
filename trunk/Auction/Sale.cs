@@ -77,7 +77,7 @@ namespace Auction
                 _bids.Add(bid);
             if (CanBuyOut && (CurrentPrice >= BuyOutPrice))
             {
-                Buyer.LotsBuyed.Add(this);
+                bid.Bidder.LotsBuyed.Add(this);
                 IsActive = false;
             }
         }

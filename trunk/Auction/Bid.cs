@@ -15,7 +15,7 @@ namespace Auction
         {
             Value = value;
             Bidder = bidder;
-            Time = DateTime.Today;
+            Time = DateTime.Now;
         }
     }
 }
