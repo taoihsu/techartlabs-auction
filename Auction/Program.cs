@@ -23,8 +23,16 @@ namespace Auction
             series.AddSale(sale);
             auc.AddSeries(series);
 
-            sale.MakeBid(new Bid(120,auc.GetBuyerByLogin("blogin1")));
+            sale.MakeBid(new Bid(120, auc.GetBuyerByLogin("blogin1")));
+            sale.MakeBid(new Bid(125, auc.GetBuyerByLogin("blogin2")));
+            sale.MakeBid(new Bid(127, auc.GetBuyerByLogin("blogin1")));
+            sale.MakeBid(new Bid(130, auc.GetBuyerByLogin("blogin3")));
 
+            var login1bids = auc.Bids.Where(b => b.Bidder.Login == "blogin1");
+            foreach (var login1Bid in login1bids)
+            {
+                Console.WriteLine(login1Bid.Value);
+            }
 
         }
     }
