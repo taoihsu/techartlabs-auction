@@ -32,7 +32,7 @@ namespace Auction
 
         public double CurrentPrice
         {
-            get { return ((Bids.Count == 0) ? Bids.Last<Bid>().Value : StartPrice); }
+            get { return ((Bids.Count == 0) ? StartPrice:  Bids.Last<Bid>().Value); }
         }
 
         public DateTime StartTime { get; private set; }
@@ -80,6 +80,11 @@ namespace Auction
                 bid.Bidder.LotsBuyed.Add(this);
                 IsActive = false;
             }
+        }
+
+        private bool CanMakeBid(Bid bid)
+        {
+            return true;
         }
     }
 }

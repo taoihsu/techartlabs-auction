@@ -11,6 +11,19 @@ namespace Auction
         public string Name { get; private set; }
         private List<Sale> _sales;
         public ReadOnlyCollection<Sale> Sales { get { return new ReadOnlyCollection<Sale>(_sales); } }
+        public ReadOnlyCollection<Bid> Bids
+        {
+            get
+            {
+                var allBids = new List<Bid>();
+                foreach (var sale in _sales)
+                {
+                    allBids.AddRange(sale.Bids);
+                }
+                return new ReadOnlyCollection<Bid>(allBids);
+            }
+        }
+
         public double SummaryPrice
         {
             get { return _sales.Select<Sale, double>(l => l.CurrentPrice).Sum(); }

@@ -11,7 +11,31 @@ namespace Auction
     {
         public string Name { get; private set; }
         private List<Series> _series;
-        public ReadOnlyCollection<Series> Series {get{return new ReadOnlyCollection<Series>(_series);}} 
+        public ReadOnlyCollection<Series> Series {get{return new ReadOnlyCollection<Series>(_series);}}
+        public ReadOnlyCollection<Sale> Sales
+        {
+            get
+            {
+                var allSales = new List<Sale>();
+                foreach (var s in _series)
+                {   
+                    allSales.AddRange(s.Sales);
+                }
+                return new ReadOnlyCollection<Sale>(allSales);
+            }
+        } 
+        public ReadOnlyCollection<Bid> Bids
+        {
+            get
+            {
+                var allBids = new List<Bid>();
+                foreach (var sale in Sales)
+                {
+                    allBids.AddRange(sale.Bids);
+                }
+                return new ReadOnlyCollection<Bid>(allBids);
+            }
+        }
         public Series this[string seriesName]
         {
             get { return GetSeries(seriesName); }
@@ -32,7 +56,12 @@ namespace Auction
         }
         public void AddSeries(Series series)
         {
+            if (_series.Count(s=>s.Name == series.Name) == 0)
             _series.Add(series);
+            else
+            {
+                throw new DuplicateNameException("Series name is not available");
+            }
         }
         public void AddBuyer(Buyer buyer)
         {
@@ -78,6 +107,8 @@ namespace Auction
         {
             return _series.Select<Series, double>(s => s.GetPriceByCategory(category)).Sum();
         }
+
+
 
         public IEnumerable<Buyer> GetActiveBuyersByBidsCount(int buyersCount)
         {
