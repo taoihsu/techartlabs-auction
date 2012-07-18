@@ -13,12 +13,14 @@ namespace Auction
         public List<Lot> Lots { get; private set; }
         public bool IsComplex {get { return Lots != null; }}
 
-        public Lot(string name, string discription, byte[] image, List<Lot> lots = null )
+        public Lot(string name, string discription, byte[] image, params Lot[] lots )
         {
             Name = name;
             Discription = discription;
             Image = image;
-            Lots = lots;
+            if (!lots.Any()) return;
+            Lots = new List<Lot>();
+            Lots.AddRange(lots);
         }
     }
 }
