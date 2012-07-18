@@ -11,7 +11,7 @@ namespace Auction
         public string Name { get; private set; }
         public Lot Lot { get; private set; }
         public Category Category { get; private set; }
-        private List<Bid> _bids;
+        private readonly List<Bid> _bids;
         public ReadOnlyCollection<Bid> Bids { get { return new ReadOnlyCollection<Bid>(_bids);} } 
         public Seller Seller { get; private set; }
         public Buyer Buyer { get { return IsActive ? null : LastBidder; } }
@@ -29,7 +29,7 @@ namespace Auction
         public double BuyOutPrice { get; private set; }
 
         public double StartPrice { get; private set; }
-
+        public double Increment { get; private set; }
         public double CurrentPrice
         {
             get { return ((Bids.Count == 0) ? StartPrice:  Bids.Last<Bid>().Value); }
@@ -44,13 +44,14 @@ namespace Auction
         public bool IsActive { get; private set; }
         public bool IsSaled { get { return (Bids.Count > 0) && (IsTimeExpired); } }
 
-        public Sale(string name,Lot lot,double startPrice, Seller seller, TimeSpan duration, Category category, double buyOutPrice = 0.0)
+        public Sale(string name, Lot lot, Seller seller, double startPrice, double increment, TimeSpan duration, Category category, double buyOutPrice = 0.0)
         {
             Name = name;
             Lot = lot;
             StartTime = DateTime.Now;
             _bids = new List<Bid>();
             StartPrice = startPrice;
+            Increment = increment;
             Seller = seller;
             //нужно ли хранить список лотов у людей?
             Seller.Lots.Add(this);
@@ -65,15 +66,14 @@ namespace Auction
             }
             IsActive = true;
             if (duration < TimeSpan.FromMinutes(1))
-                duration = TimeSpan.FromMinutes(1);
+                duration = TimeSpan.FromSeconds(1); //исправить! FromMinutes(1)
             Duration = duration;
             Category = category;
         }
 
         public void MakeBid(Bid bid)
         {
-            //проверка на минимальное увеличение ставки
-            if (bid.Value > CurrentPrice)
+            if (CanMakeBid(bid))
                 _bids.Add(bid);
             if (CanBuyOut && (CurrentPrice >= BuyOutPrice))
             {
@@ -84,7 +84,11 @@ namespace Auction
 
         private bool CanMakeBid(Bid bid)
         {
-            return true;
+            if ((bid.Value - CurrentPrice >= Increment) && (DateTime.Now < FinishTime))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

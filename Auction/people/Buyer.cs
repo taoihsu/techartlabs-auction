@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Auction
 {
-    public class Buyer: Person
+    public class Buyer : Person
     {
         public List<Bid> Bids { get; private set; }
         public List<Sale> LotsBuyed { get; private set; }
@@ -21,21 +21,16 @@ namespace Auction
         {
             return LotsBuyed.Count;
         }
+
         public int GetBidsCount()
         {
             return Bids.Count;
         }
+
         public double GetAveragePrice()
         {
             double priceSum = LotsBuyed.Sum(sale => sale.CurrentPrice);
             return priceSum/GetPurchaseCount();
         }
-
-        // ? 
-        public void RegisterBid(Sale sale)
-        {
-
-        }
-
     }
 }

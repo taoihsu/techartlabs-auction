@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
-using System.Text;
 
 namespace Auction
 {
     public class Auction
     {
         public string Name { get; private set; }
-        private List<Series> _series;
+        private readonly List<Series> _series;
         public ReadOnlyCollection<Series> Series {get{return new ReadOnlyCollection<Series>(_series);}}
         public ReadOnlyCollection<Sale> Sales
         {
@@ -41,10 +39,10 @@ namespace Auction
             get { return GetSeries(seriesName); }
         }
 
-        private List<Seller> _sellers;
+        private readonly List<Seller> _sellers;
         public ReadOnlyCollection<Seller> Sellers { get { return new ReadOnlyCollection<Seller>(_sellers); } }
 
-        private List<Buyer> _buyers;
+        private readonly List<Buyer> _buyers;
         public ReadOnlyCollection<Buyer> Buyers { get { return new ReadOnlyCollection<Buyer>(_buyers); } }
         
         public Auction(string name)
@@ -101,11 +99,11 @@ namespace Auction
 
         public double GetSummaryPrice()
         {
-            return _series.Select<Series, double>(s => s.SummaryPrice).Sum();
+            return _series.Select(s => s.SummaryPrice).Sum();
         }
         public double GetSummaryPriceByCategory(Category category)
         {
-            return _series.Select<Series, double>(s => s.GetPriceByCategory(category)).Sum();
+            return _series.Select(s => s.GetPriceByCategory(category)).Sum();
         }
 
 
@@ -116,7 +114,7 @@ namespace Auction
             sortedByBidsCount.Sort(BuyersByBidsCountComparer);
             return sortedByBidsCount.Take(buyersCount);
         }
-        private int BuyersByBidsCountComparer(Buyer first, Buyer second)
+        private static int BuyersByBidsCountComparer(Buyer first, Buyer second)
         {
             if (first == null)
             {

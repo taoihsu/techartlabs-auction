@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 
 namespace Auction
 {
     public class Series
     {
         public string Name { get; private set; }
-        private List<Sale> _sales;
+        private readonly List<Sale> _sales;
         public ReadOnlyCollection<Sale> Sales { get { return new ReadOnlyCollection<Sale>(_sales); } }
         public ReadOnlyCollection<Bid> Bids
         {
@@ -26,7 +24,7 @@ namespace Auction
 
         public double SummaryPrice
         {
-            get { return _sales.Select<Sale, double>(l => l.CurrentPrice).Sum(); }
+            get { return _sales.Select(l => l.CurrentPrice).Sum(); }
         }
 
         public Series(string name)
@@ -41,7 +39,7 @@ namespace Auction
         public double GetPrice() { return SummaryPrice; }
         public double GetPriceByCategory(Category category)
         {
-            return _sales.Where<Sale>(l => l.Category.Name == category.Name).Select<Sale, double>(l => l.CurrentPrice).Sum();
+            return _sales.Where(l => l.Category.Name == category.Name).Select(l => l.CurrentPrice).Sum();
         }
 
         public int GetActiveLotCout()
@@ -51,7 +49,7 @@ namespace Auction
 
         public List<Buyer> GetBuyers()
         {
-            List<Buyer> buyers = new List<Buyer>();
+            var buyers = new List<Buyer>();
             foreach (var lot in _sales)
             {
                 if (!buyers.Contains<Buyer>(lot.Buyer))
