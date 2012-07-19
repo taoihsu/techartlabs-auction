@@ -53,8 +53,8 @@ namespace Auction
             StartPrice = startPrice;
             Increment = increment;
             Seller = seller;
-            //нужно ли хранить список лотов у людей?
-            Seller.Lots.Add(this);
+            //нужно ли хранить список лотов у людей? - нет
+            //Seller.Lots.Add(this);
             if (buyOutPrice > startPrice)
             {
                 CanBuyOut = true;
@@ -73,16 +73,16 @@ namespace Auction
 
         public void MakeBid(Bid bid)
         {
-            if (CanMakeBid(bid))
+            if (CanBid(bid))
                 _bids.Add(bid);
             if (CanBuyOut && (CurrentPrice >= BuyOutPrice))
             {
-                bid.Bidder.LotsBuyed.Add(this);
+                //bid.Bidder.LotsBuyed.Add(this);
                 IsActive = false;
             }
         }
 
-        private bool CanMakeBid(Bid bid)
+        private bool CanBid(Bid bid)
         {
             if ((bid.Value - CurrentPrice >= Increment) && (DateTime.Now < FinishTime))
             {

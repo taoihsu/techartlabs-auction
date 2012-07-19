@@ -7,12 +7,12 @@ namespace Auction
 {
     public class Seller: Person
     {
-        public List<Sale> Lots { get; private set; }
+        //public List<Sale> Lots { get; private set; }
 
         internal Seller(string login, string firstName, string secondName)
             : base(login, firstName, secondName)
         {
-            Lots = new List<Sale>();
+            //Lots = new List<Sale>();
         }
     }
 }

@@ -108,36 +108,37 @@ namespace Auction
 
 
 
-        public IEnumerable<Buyer> GetActiveBuyersByBidsCount(int buyersCount)
-        {
-            List<Buyer> sortedByBidsCount = new List<Buyer>(_buyers); 
-            sortedByBidsCount.Sort(BuyersByBidsCountComparer);
-            return sortedByBidsCount.Take(buyersCount);
-        }
-        private static int BuyersByBidsCountComparer(Buyer first, Buyer second)
-        {
-            if (first == null)
-            {
-                if (second == null)
-                { 
-                    return 0;
-                }
-                else
-                {
-                    return -1;
-                }
-            }
-            else
-            {
-                if (second == null)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return first.GetBidsCount().CompareTo(second.GetBidsCount());
-                }
-            }
-        }
+        //public IEnumerable<Buyer> GetActiveBuyersByBidsCount(int buyersCount)
+        //{
+        //    List<Buyer> sortedByBidsCount = new List<Buyer>(_buyers); 
+        //    sortedByBidsCount.Sort(BuyersByBidsCountComparer);
+        //    return sortedByBidsCount.Take(buyersCount);
+        //}
+
+        //private static int BuyersByBidsCountComparer(Buyer first, Buyer second)
+        //{
+        //    if (first == null)
+        //    {
+        //        if (second == null)
+        //        { 
+        //            return 0;
+        //        }
+        //        else
+        //        {
+        //            return -1;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (second == null)
+        //        {
+        //            return 1;
+        //        }
+        //        else
+        //        {
+        //            return first.GetBidsCount().CompareTo(second.GetBidsCount());
+        //        }
+        //    }
+        //}
     }
 }
