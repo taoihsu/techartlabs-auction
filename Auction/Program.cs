@@ -33,7 +33,7 @@ namespace Auction
             sale.MakeBid(new Bid(130, auc.GetBuyerByLogin("blogin3")));
             Thread.Sleep(2000);
 
-
+            
 
             var login1bids = auc.Bids.Where(b => b.Bidder.Login == "blogin1");
             var salesbuyed = auc.Sales.Where(s => s.IsSaled == true);
