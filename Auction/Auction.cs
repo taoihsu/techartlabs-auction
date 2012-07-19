@@ -9,19 +9,33 @@ namespace Auction
     {
         public string Name { get; private set; }
         private readonly List<Series> _series;
-        public ReadOnlyCollection<Series> Series {get{return new ReadOnlyCollection<Series>(_series);}}
+        public ReadOnlyCollection<Series> Series
+        {
+            get { return new ReadOnlyCollection<Series>(_series); }
+        }
+        //private readonly List<Sale> _sales;
+        //public ReadOnlyCollection<Sale> Sales
+        //{
+        //    get { return new ReadOnlyCollection<Sale>(_sales); }
+        //}
+        //private readonly List<Bid> _bids;
+        //public ReadOnlyCollection<Bid> Bids
+        //{
+        //    get { return new ReadOnlyCollection<Bid>(_bids); }
+        //}
+
         public ReadOnlyCollection<Sale> Sales
         {
             get
             {
                 var allSales = new List<Sale>();
                 foreach (var s in _series)
-                {   
+                {
                     allSales.AddRange(s.Sales);
                 }
                 return new ReadOnlyCollection<Sale>(allSales);
             }
-        } 
+        }
         public ReadOnlyCollection<Bid> Bids
         {
             get
@@ -44,18 +58,23 @@ namespace Auction
 
         private readonly List<Buyer> _buyers;
         public ReadOnlyCollection<Buyer> Buyers { get { return new ReadOnlyCollection<Buyer>(_buyers); } }
-        
+        public AuctionSettings Settings;
+
         public Auction(string name)
         {
             Name = name;
             _series = new List<Series>();
             _sellers = new List<Seller>();
             _buyers = new List<Buyer>();
+            Settings = new AuctionSettings();
         }
         public void AddSeries(Series series)
         {
             if (_series.Count(s=>s.Name == series.Name) == 0)
-            _series.Add(series);
+            {
+                _series.Add(series);
+                series.Settings = Settings;
+            }
             else
             {
                 throw new DuplicateNameException("Series name is not available");
@@ -75,7 +94,7 @@ namespace Auction
             else
                 throw new DuplicateNameException("login is not available");
         }
-
+        
         public Series GetSeries(string seriesName)
         {
             return _series.First(s => s.Name == seriesName);
@@ -106,39 +125,41 @@ namespace Auction
             return _series.Select(s => s.GetPriceByCategory(category)).Sum();
         }
 
+        public void MakeBid(Sale sale, Bid bid)
+        {
+            if (!Sales.Contains(sale)) return;
+            if (GetUserBids(bid.Bidder).Sum(b=>b.Value) >= sale.Category.Restriction)
+            {
+                sale.RegisterBid(bid);
+            }
+        }
 
+        public IEnumerable<Bid> GetUserBids(Buyer buyer)
+        {
+            return Bids.Where(b => b.Bidder == buyer);
+        }
 
-        //public IEnumerable<Buyer> GetActiveBuyersByBidsCount(int buyersCount)
-        //{
-        //    List<Buyer> sortedByBidsCount = new List<Buyer>(_buyers); 
-        //    sortedByBidsCount.Sort(BuyersByBidsCountComparer);
-        //    return sortedByBidsCount.Take(buyersCount);
-        //}
+        public IEnumerable<Sale> GetUserPurchase(Buyer buyer)
+        {
+            return Sales.Where(s => s.IsSaled).Where(s => s.Buyer == buyer);
+        }
 
-        //private static int BuyersByBidsCountComparer(Buyer first, Buyer second)
-        //{
-        //    if (first == null)
-        //    {
-        //        if (second == null)
-        //        { 
-        //            return 0;
-        //        }
-        //        else
-        //        {
-        //            return -1;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (second == null)
-        //        {
-        //            return 1;
-        //        }
-        //        else
-        //        {
-        //            return first.GetBidsCount().CompareTo(second.GetBidsCount());
-        //        }
-        //    }
-        //}
+        public IEnumerable<Buyer> GetActiveBuyersByBidsCount(int buyersCount)
+        {
+            var buyersByBidCount = new Dictionary<Buyer, int>();
+            foreach (var bid in Bids)
+            {
+                if (buyersByBidCount.ContainsKey(bid.Bidder))
+                {
+                    buyersByBidCount[bid.Bidder]++;
+                }
+                else
+                {
+                    buyersByBidCount.Add(bid.Bidder, 0);
+                }
+            }
+            var result = buyersByBidCount.OrderBy(b => b.Value).Select(source => source.Key);
+            return result;
+        }
     }
 }

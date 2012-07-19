@@ -21,7 +21,7 @@ namespace Auction
                 return new ReadOnlyCollection<Bid>(allBids);
             }
         }
-
+        public AuctionSettings Settings { get; set; }
         public double SummaryPrice
         {
             get { return _sales.Select(l => l.CurrentPrice).Sum(); }
@@ -30,12 +30,26 @@ namespace Auction
         public Series(string name)
         {
             Name = name;
-            _sales = new List<Sale>(); 
+            _sales = new List<Sale>();
+            Settings = new AuctionSettings();
         }
         public void AddSale(Sale sale)
         {
+            var lastOrDefault = _sales.LastOrDefault();
+            if (lastOrDefault != null) sale.Number = lastOrDefault.Number + 1;
+
+            if (sale.Duration < Settings.MinSaleDuration)
+            {
+                sale.Duration = Settings.MinSaleDuration;
+            }
             _sales.Add(sale);
         }
+
+        public Sale GetSaleByNumber(int saleNumber)
+        {
+            return _sales.FirstOrDefault(s => s.Number == saleNumber);
+        }
+
         public double GetPrice() { return SummaryPrice; }
         public double GetPriceByCategory(Category category)
         {
@@ -57,20 +71,5 @@ namespace Auction
             }
             return buyers;
         }
-
-        /*
-        public List<Buyer> GetActiveBuyers(double percentage)
-        {
-            List<Buyer> activeBuyers = new List<Buyer>();
-            foreach (var buyer in GetBuyers())
-            {
-                activeBuyers.Add(buyer);
-            }
-
-            int activeBuyersCount = (int)(activeBuyers.Count * percentage / 100);
-            List<Buyer> activeBuyersByPercentage = new List<Buyer>();
-        }
-        */
-
     }
 }
